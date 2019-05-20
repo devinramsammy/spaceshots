@@ -1,12 +1,12 @@
 interface impact{
   boolean isColliding();
 }
-abstract class Ship{
+abstract class Ships{
   double x,y;
   int defense;
   int attack;
   int type; // 0 for player, 1 for ship
-  Ship(double x, double y){
+  Ships(double x, double y){
     this.x = x;
     this.y = y;
   }
@@ -14,20 +14,19 @@ abstract class Ship{
   abstract void setType();
   abstract void isShooting();
   abstract boolean isColliding();
-  abstract void display();
   abstract void setDefense();
   abstract void setAttack();
 }
-class playerShip extends Ship{
+class playerShip extends Ships{
   playerShip(double x, double y){
     super(x,y);
   }
-  void setType{
-    type = 0;
+
   }
-}
 void setup(){
   size(1000,1000);
+}
+void draw(){
   background(255);
 }
   
