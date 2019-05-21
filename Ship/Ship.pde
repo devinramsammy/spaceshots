@@ -2,11 +2,11 @@ interface impact{
   boolean isColliding();
 }
 abstract class Ships implements impact{
-  double x,y;
+  float x,y;
   int defense;
   int attack;
   int type; // 0 for player, 1 for ship
-  Ships(double x, double y){
+  Ships(float x, float y){
     this.x = x;
     this.y = y;
   }
@@ -15,11 +15,13 @@ abstract class Ships implements impact{
   abstract void setType();
   abstract void isShooting();
   abstract boolean isColliding();
-  abstract void display();
+  abstract void draw();
 }
 class playerShip extends Ships{
-  playerShip(double x, double y){
+  PImage player;
+  playerShip(float x, float y){
     super(x,y);
+    player = loadImage("player.jpg");
   }
   void setAttack(){
     attack = 1;
@@ -35,11 +37,19 @@ class playerShip extends Ships{
   boolean isColliding(){
     return false;
 }
+
+  void draw(){
+    image(player,x ,y);
+    
+}
 }
 void setup(){
-  size(1000,1000);
+  size(800,800);
+  playerShip a = new playerShip(0,0);
+  a.draw();
 }
 void draw(){
-  background(255);
+  background(0);
+  
 }
   
