@@ -1,7 +1,13 @@
-interface impact{
+interface Impact{
   boolean isColliding();
 }
-abstract class Ships implements impact{
+interface Displayable {
+  void display();
+}
+
+
+
+abstract class Ships implements Impact, Displayable{
   float x,y;
   int defense;
   int attack;
@@ -15,8 +21,11 @@ abstract class Ships implements impact{
   abstract void setType();
   abstract void isShooting();
   abstract boolean isColliding();
-  abstract void draw();
+  abstract void display();
 }
+
+
+
 class playerShip extends Ships{
   PImage player;
   playerShip(float x, float y){
@@ -37,19 +46,25 @@ class playerShip extends Ships{
   boolean isColliding(){
     return false;
 }
+  void display(){
+    image(player, x, y, 50, 50);
+}
+}
 
-  void draw(){
-    image(player,x ,y);
-    
-}
-}
+ArrayList<Displayable> thingsToDisplay;
+
+
 void setup(){
   size(800,800);
-  playerShip a = new playerShip(0,0);
-  a.draw();
+  thingsToDisplay = new ArrayList<Displayable>();
+  playerShip ship = new playerShip(382,750);
+  thingsToDisplay.add(ship);
+
 }
 void draw(){
   background(0);
-  
+  for (Displayable thing : thingsToDisplay) {
+    thing.display();
+  }
 }
   
