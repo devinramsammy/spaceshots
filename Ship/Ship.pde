@@ -59,16 +59,26 @@ class playerShip extends Ships{
       }
     }
   }
+  void keyReleased(){
+    if(key == 'a' || key == 'A'){
+      moveLeft = false;
+    }
+    else{
+     if(key == 'd' || key == 'D'){
+      moveRight = false;
+      }
+    }
+  }
   void display(){
     image(player, x, y, 50, 50);
-    if ((keyPressed == true) && ((key == 'a') || (key == 'A'))){
+    if (moveLeft){
       pushMatrix();
       x-=3;
       translate(x,y);
       popMatrix();
 }  
   
-    if (moveRight == true){
+    if (moveRight){
       pushMatrix();
       x+=3;
       translate(x,y);
