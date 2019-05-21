@@ -48,6 +48,16 @@ class playerShip extends Ships{
 }
   void display(){
     image(player, x, y, 50, 50);
+    if ((keyPressed == true) && ((key == 'a') || (key == 'A'))){
+      pushMatrix();
+      translate(3,0);
+      popMatrix();
+}  
+    if ((keyPressed == true) && ((key == 'd') || (key == 'D'))){
+      pushMatrix();
+      translate(-3,0);
+      popMatrix();
+}
 }
 }
 
