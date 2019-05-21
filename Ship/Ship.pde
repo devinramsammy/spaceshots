@@ -28,6 +28,8 @@ abstract class Ships implements Impact, Displayable{
 
 class playerShip extends Ships{
   PImage player;
+  boolean moveRight = false;
+  boolean moveLeft = false;
   playerShip(float x, float y){
     super(x,y);
     player = loadImage("player.jpg");
@@ -46,6 +48,17 @@ class playerShip extends Ships{
   boolean isColliding(){
     return false;
 }
+
+  void keyPressed(){
+    if(key == 'a' || key == 'A'){
+      moveLeft = true;
+    }
+    else{
+     if(key == 'd' || key == 'D'){
+      moveRight = true;
+      }
+    }
+  }
   void display(){
     image(player, x, y, 50, 50);
     if ((keyPressed == true) && ((key == 'a') || (key == 'A'))){
@@ -54,12 +67,14 @@ class playerShip extends Ships{
       translate(x,y);
       popMatrix();
 }  
-    if ((keyPressed == true) && ((key == 'd') || (key == 'D'))){
+  
+    if (moveRight == true){
       pushMatrix();
       x+=3;
       translate(x,y);
       popMatrix();
 }
+ 
 }
 }
 
