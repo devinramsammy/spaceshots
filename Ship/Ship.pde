@@ -33,6 +33,7 @@ class playerShip extends Ships{
   playerShip(float x, float y){
     super(x,y);
     player = loadImage("player.jpg");
+    image(player, x, y, 50, 50);
   }
   void setAttack(){
     attack = 1;
@@ -49,6 +50,26 @@ class playerShip extends Ships{
     return false;
 }
 
+
+  void moveLeft(){
+      pushMatrix();
+      x-=3;
+      translate(x,y);
+      popMatrix();
+}  
+  
+  void moveRight()){
+      pushMatrix();
+      x+=3;
+      translate(x,y);
+      popMatrix();
+}
+ 
+}
+
+ArrayList<Displayable> thingsToDisplay;
+boolean moveLeft = false;
+boolean moveRight = true;
   void keyPressed(){
     if(key == 'a' || key == 'A'){
       moveLeft = true;
@@ -69,28 +90,6 @@ class playerShip extends Ships{
       }
     }
   }
-  void display(){
-    image(player, x, y, 50, 50);
-    if (moveLeft){
-      pushMatrix();
-      x-=3;
-      translate(x,y);
-      popMatrix();
-}  
-  
-    if (moveRight){
-      pushMatrix();
-      x+=3;
-      translate(x,y);
-      popMatrix();
-}
- 
-}
-}
-
-ArrayList<Displayable> thingsToDisplay;
-
-
 void setup(){
   size(800,800);
   thingsToDisplay = new ArrayList<Displayable>();
@@ -100,8 +99,11 @@ void setup(){
 }
 void draw(){
   background(0);
-  for (Displayable thing : thingsToDisplay) {
-    thing.display();
+  if(moveLeft){
+    ship.moveLeft();
+  }
+  if(moveRight){
+    ship.moveRight();
   }
 }
   
