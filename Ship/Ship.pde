@@ -69,10 +69,15 @@ class playerShip extends Ships{
 }
  
 }
+class bullet implements Impact{
+  PImage bullet;
+  
+}
+  
 
 ArrayList<Displayable> thingsToDisplay;
 boolean moveLeft = false;
-boolean moveRight = true;
+boolean moveRight = false;
 playerShip ship; 
   void keyPressed(){
     if(key == 'a' || key == 'A'){
@@ -97,7 +102,7 @@ playerShip ship;
 void setup(){
   size(800,800);
   thingsToDisplay = new ArrayList<Displayable>();
-  ship = new playerShip(0,0);
+  ship = new playerShip(382,750);
   thingsToDisplay.add(ship);
 
 }
