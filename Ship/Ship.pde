@@ -69,7 +69,7 @@ class playerShip extends Ships{
 }
  
 }
-class bullet implements Impact{
+class Bullet implements Impact{
   PImage bullet;
   
 }
@@ -78,27 +78,31 @@ class bullet implements Impact{
 ArrayList<Displayable> thingsToDisplay;
 boolean moveLeft = false;
 boolean moveRight = false;
+boolean shoot = false;
 playerShip ship; 
   void keyPressed(){
     if(key == 'a' || key == 'A'){
       moveLeft = true;
     }
-    else{
-     if(key == 'd' || key == 'D'){
+    else if(key == 'd' || key == 'D'){
       moveRight = true;
       }
-    }
+    else if(key == ' '){
+        shoot = true;
   }
+  }
+  
   void keyReleased(){
     if(key == 'a' || key == 'A'){
       moveLeft = false;
     }
-    else{
-     if(key == 'd' || key == 'D'){
+    else if(key == 'd' || key == 'D'){
       moveRight = false;
       }
-    }
+    else if(key == ' '){
+      shoot = true;
   }
+    }
 void setup(){
   size(800,800);
   thingsToDisplay = new ArrayList<Displayable>();
