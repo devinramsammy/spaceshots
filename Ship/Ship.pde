@@ -28,8 +28,6 @@ abstract class Ships implements Impact, Displayable{
 
 class playerShip extends Ships{
   PImage player;
-  boolean moveRight = false;
-  boolean moveLeft = false;
   playerShip(float x, float y){
     super(x,y);
     player = loadImage("player.jpg");
@@ -71,8 +69,17 @@ class playerShip extends Ships{
 }
 class Bullet implements Impact{
   PImage bullet;
+  float x,y;
+  int damage;
+  Bullet(float x, float y, int damage){
+    this.x = x;
+    this.y = y;
+    this.damage = damage;
+    bullet = loadImage("bullet.png");  
+}
   
 }
+  
   
 
 ArrayList<Displayable> thingsToDisplay;
