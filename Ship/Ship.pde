@@ -1,7 +1,3 @@
-
-  
-  
-
 ArrayList<Displayable> thingsToDisplay;
 boolean moveLeft = false;
 boolean moveRight = false;
@@ -35,10 +31,7 @@ void setup(){
   thingsToDisplay = new ArrayList<Displayable>();
   ship = new playerShip(382,750);
   thingsToDisplay.add(ship);
-  if(shoot){
-    Bullet temp = new Bullet(ship.getX() + 5,ship.getY() + 5, ship.getDamage());
-    thingsToDisplay.add(temp);
-  }
+  
 
 }
 void draw(){
@@ -52,8 +45,15 @@ void draw(){
   if(moveRight){
     ship.moveRight();
   }
- 
-  
-  
+  if(shoot){
+    Bullet temp = new Bullet(ship.getX() + 23,ship.getY() + 4, ship.getDamage());
+    thingsToDisplay.add(temp);
+    int distance = 60;
+    while (distance < 800){
+      temp.y -= 1;
+      distance +=3;
+      translate(temp.x,temp.y);
+  }
+  }
 }
   

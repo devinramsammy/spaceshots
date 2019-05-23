@@ -18,7 +18,7 @@ class Bullet implements Impact, Displayable{
     int distance = 60;
     while (distance < 800){
       pushMatrix();
-      y += 1;
+      y -= 1;
       distance +=3;
       translate(x,y);
       popMatrix();
