@@ -16,6 +16,12 @@ abstract class Ships implements Impact, Displayable{
     this.x = x;
     this.y = y;
   }
+  float getX(){
+    return x;
+  }
+  float getY(){
+    return y;
+  }
   abstract void setAttack();
   abstract void setDefense();
   abstract void setType();
@@ -33,8 +39,12 @@ class playerShip extends Ships{
     player = loadImage("player.jpg");
     
   }
+  
   void setAttack(){
     attack = 1;
+  }
+  int getDamage(){
+    return attack;
   }
   void setDefense(){
     defense = 0;
@@ -67,7 +77,7 @@ class playerShip extends Ships{
 }
  
 }
-class Bullet implements Impact{
+class Bullet implements Impact, Displayable{
   PImage bullet;
   float x,y;
   int damage;
@@ -77,7 +87,18 @@ class Bullet implements Impact{
     this.damage = damage;
     bullet = loadImage("bullet.png");  
 }
-  
+  void display(){
+    image(bullet, x,y,25,25);
+  }
+  boolean isColliding(){
+    return false;
+  }
+  void moveUp(){
+    pushMatrix();
+    y += 3;
+    translate(x,y);
+    popMatrix();
+  }
 }
   
   
@@ -128,6 +149,10 @@ void draw(){
   if(moveRight){
     ship.moveRight();
   }
-  
+  if(shoot){
+    Bullet temp = new Bullet(ship.getX(),ship.getY(), ship.getDamage());
+    thingsToDisplay.add(temp);
+    temp.moveUp();
+  }
 }
   
