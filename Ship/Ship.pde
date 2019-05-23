@@ -46,14 +46,8 @@ void draw(){
     ship.moveRight();
   }
   if(shoot){
-    Bullet temp = new Bullet(ship.getX() + 23,ship.getY() + 4, ship.getDamage());
-    thingsToDisplay.add(temp);
-    int distance = 60;
-    while (distance < 800){
-      temp.y -= 1;
-      distance +=3;
-      translate(temp.x,temp.y);
+    ship.shoot();
   }
   }
-}
+
   

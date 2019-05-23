@@ -1,9 +1,10 @@
 class playerShip extends Ships{
   PImage player;
+  int lastShot;
   playerShip(float x, float y){
     super(x,y);
     player = loadImage("player.jpg");
-    
+    lastShot = 0;
   }
   
   void setAttack(){
@@ -41,5 +42,14 @@ class playerShip extends Ships{
       translate(x,y);
       popMatrix();
 }
+  void shoot(){
+    if (millis() - lastShot>200){
+      Bullet main = new Bullet(this.x, this.y, 1);
+      main.display();
+      main.moveUp();
+      main.display();
+      lastShot = millis();  
+  }
  
 }
+  }
