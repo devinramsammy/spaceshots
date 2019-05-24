@@ -16,9 +16,6 @@ class playerShip extends Ships{
   void setDefense(){
     defense = 0;
   }
-  void setType(){
-    type = 0;
-  }
   void isShooting(){
   }
   boolean isColliding(){
