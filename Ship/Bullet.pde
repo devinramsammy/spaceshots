@@ -16,10 +16,5 @@ class Bullet implements Impact, Displayable{
   boolean isColliding(){
     return false;
   }
-  void moveUp(){
-     pushMatrix();
-    
-     translate(x,y);
-     popMatrix();
-  }
+
   }

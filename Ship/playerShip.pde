@@ -42,12 +42,4 @@ class playerShip extends Ships{
       translate(x,y);
       popMatrix();
 }
-  void shoot(){
-    if (millis() - lastShot>200){
-      Bullet main = new Bullet(this.x, this.y, 1);
-      main.moveUp();
-      lastShot = millis();  
-  }
- 
 }
-  }
