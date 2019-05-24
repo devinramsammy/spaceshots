@@ -42,15 +42,15 @@ void draw(){
   for (Displayable thing : thingsToDisplay) {
     thing.display();
   }
-  if(ship.getX() == 0.0){
-    ship.setX(750.0);
+  if(ship.getX() <= -25.0){
+    ship.setX(800.0);
     ship.reDraw();
   }
   if(moveLeft){
     ship.moveLeft();
   }
-  if(ship.getX() == 750.0){
-    ship.setX(0.0);
+  if(ship.getX() >= 800.0){
+    ship.setX(-25.0);
     ship.reDraw();
   }
   if(moveRight){
