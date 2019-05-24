@@ -42,4 +42,7 @@ class playerShip extends Ships{
       translate(x,y);
       popMatrix();
 }
+  void reDraw(){
+    image(player, x, y, 50, 50);
+}
 }

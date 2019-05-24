@@ -42,12 +42,21 @@ void draw(){
   for (Displayable thing : thingsToDisplay) {
     thing.display();
   }
+  if(ship.getX() == 0.0){
+    ship.setX(750.0);
+    ship.reDraw();
+  }
   if(moveLeft){
     ship.moveLeft();
+  }
+  if(ship.getX() == 750.0){
+    ship.setX(0.0);
+    ship.reDraw();
   }
   if(moveRight){
     ship.moveRight();
   }
+
   if(shoot){
     if (millis() - ship.lastShot>400){
         dummy = new Bullet(ship.getX() + 23,ship.getY()+ 9,1);
