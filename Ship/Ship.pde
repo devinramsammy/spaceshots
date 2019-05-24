@@ -3,6 +3,7 @@ boolean moveLeft = false;
 boolean moveRight = false;
 boolean shoot = false;
 playerShip ship; 
+Bullet temp;
   void keyPressed(){
     if(key == 'a' || key == 'A'){
       moveLeft = true;
@@ -30,7 +31,9 @@ void setup(){
   size(800,800);
   thingsToDisplay = new ArrayList<Displayable>();
   ship = new playerShip(382,750);
+  temp = new Bullet(382,750,1);
   thingsToDisplay.add(ship);
+  thingsToDisplay.add(temp);
   
 
 }
@@ -46,7 +49,7 @@ void draw(){
     ship.moveRight();
   }
   if(shoot){
-    ship.shoot();
+    temp.moveUp();
   }
   }
 

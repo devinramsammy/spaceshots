@@ -45,9 +45,7 @@ class playerShip extends Ships{
   void shoot(){
     if (millis() - lastShot>200){
       Bullet main = new Bullet(this.x, this.y, 1);
-      main.display();
       main.moveUp();
-      main.display();
       lastShot = millis();  
   }
  
