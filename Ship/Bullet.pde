@@ -6,9 +6,11 @@ class Bullet implements Impact, Displayable{
     this.x = x;
     this.y = y;
     this.damage = damage;
-    bullet = loadImage("bullet.png");  
+    bullet = loadImage("bullet.png"); 
+    
 }
   void display(){
+    y -= 10;
     image(bullet, x,y,5,5);
   }
   boolean isColliding(){
@@ -16,7 +18,7 @@ class Bullet implements Impact, Displayable{
   }
   void moveUp(){
      pushMatrix();
-     y -= 12;
+    
      translate(x,y);
      popMatrix();
   }
