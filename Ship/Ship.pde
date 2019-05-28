@@ -30,23 +30,12 @@ Bullet dummy;
       shoot = false;
   }
     }
-void move(){
-  float velocity = 2.0;
-  for (int i = 0; i < enemy.size(); i++){
-      enemy.get(i).setX(velocity + enemy.get(i).getX());
-      if (enemy.get(a).getX() <= 35 ||enemy.get(a).getX() >= 765){
-        velocity *= -1.0;
-      }
-  }
-  for (int a = 0; a < enemy.size(); a++){
-    if (enemy.get(a).getX() <= 35 ||enemy.get(a).getX() >= 765){
-        velocity *= -1.0;
-        enemy.get(a).setY(enemy.get(a).getY() + 50);
-        break;
-      }
-    
-  }
-  }
+void enemyMove(){
+  for (int i = 0; i < enemy.size(); i++) {
+    enemyShip a = (enemyShip) enemy.get(i);
+    a.move();
+}
+}
 
 void setup(){
   size(800,800);
@@ -92,7 +81,7 @@ void draw(){
     b.display();
    // b.move();
   }
-  move();
+  enemyMove();
   
   if(ship.getX() <= -25.0){
     ship.setX(800.0);
