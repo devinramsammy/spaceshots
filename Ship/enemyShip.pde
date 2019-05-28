@@ -4,7 +4,7 @@ class enemyShip extends Ships{
   enemyShip(float x, float y, int damage){
     super(x,y);
     this.attack = damage;
-    velocity = 3.0;
+    velocity = 2.0;
     enemy = loadImage("enemy.png");
   }
   void setAttack(){
@@ -21,15 +21,6 @@ class enemyShip extends Ships{
   void display(){
     image(enemy, x,y,35,35);
   }
-  void move(){
-    pushMatrix();
-    x+= velocity;
-    if(this.x >= 765 || this.x <= 35){
-      velocity *= -1.0;
-      y += 50;
-    }
-    
-    translate(x,y);
-    popMatrix();
-}
+  
+  
 } 
