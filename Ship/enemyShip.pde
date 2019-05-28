@@ -21,15 +21,15 @@ class enemyShip extends Ships{
   void display(){
     image(enemy1, x,y,35,35);
   }
-//void move() {
-//  pushMatrix();
-//  this.x += velocity;;
-//  if(enemyO.get(0).getX() <= 35 || enemyO.get(9).getX() >= 765){
-//    velocity *= -1.0;
-//    this.y += 30;
-//  }
-//  translate(x,y);
-//  popMatrix();
-//  }
+void move() {
+  pushMatrix();
+  this.x += velocity;;
+  if(enemyO.get(0).getX() <= 35 || enemyO.get(9).getX() >= 765){
+    velocity *= -1.0;
+    this.y += 30;
+  }
+  translate(x,y);
+  popMatrix();
+  }
   
 }

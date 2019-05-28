@@ -1,6 +1,7 @@
 ArrayList<Displayable> thingsToDisplay;
 ArrayList<Bullet> bulletList;
 ArrayList<enemyShip> enemy;
+ArrayList<enemyShip> enemyO;
 boolean moveLeft = false;
 boolean moveRight = false;
 boolean shoot = false;
@@ -46,9 +47,7 @@ void setup(){
   bulletList = new ArrayList<Bullet>();
   ship = new playerShip(382,750);
   enemy = new ArrayList();
-  leftBound = new enemyShip(600,600,1);
-  tint(0);
-  tint( 255, 255 ); 
+  enemyO = new ArrayList();
   enemyBoard();
   thingsToDisplay.add(ship);
 }
@@ -58,6 +57,7 @@ void enemyBoard() {
     int y = 80 + i/10 * 70;
     temp = new enemyShip(float(x), float(y), 1);
     enemy.add(temp);
+    enemyO.add(temp);
   }
 }
 void enemyImpact(){
@@ -85,7 +85,10 @@ void draw(){
   }
   for (enemyShip b: enemy){
     b.display();
-   // b.move();
+    b.move();
+  }
+  for (enemyShip c: enemyO){
+    c.move();
   }
   enemyMove();
   
