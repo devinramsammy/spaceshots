@@ -12,12 +12,12 @@ class enemyShip extends Ships{
     defense++;
   }
   void isShooting(){
-
   }
   boolean isColliding(){
     return false;
   }
   void display(){
+    image(enemy, x,y,30,30);
   }
 }
     
