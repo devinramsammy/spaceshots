@@ -77,15 +77,15 @@ void draw(){
 
   if(shoot){
     if (millis() - ship.lastShot>400){
-        dummy = new Bullet(ship.getX() + 23,ship.getY()+ 9,1);
-        thingsToDisplay.add(dummy);
-        ship.lastShot = millis();
+        thingsToDisplay.add(new Bullet(ship.getX() + 23,ship.getY()+ 9,1));
+        dummy = (Bullet)thingsToDisplay.get(41);
         if(dummy.getY() < 0){
-          thingsToDisplay.remove(dummy);
+          thingsToDisplay.remove(41);
         }
-
-  }
+        ship.lastShot = millis();
+        
+  
+    }
   }
   text(thingsToDisplay.size() + "", 500, 500);
-
 }
