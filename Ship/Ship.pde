@@ -80,8 +80,12 @@ void draw(){
         dummy = new Bullet(ship.getX() + 23,ship.getY()+ 9,1);
         thingsToDisplay.add(dummy);
         ship.lastShot = millis();
+        if(dummy.getY() < 0){
+          thingsToDisplay.remove(dummy);
+        }
 
   }
   }
+  text(thingsToDisplay.size() + "", 500, 500);
 
 }

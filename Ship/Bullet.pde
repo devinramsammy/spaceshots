@@ -11,10 +11,16 @@ class Bullet implements Impact, Displayable{
 }
   void display(){
     y -= 10;
-    image(bullet, x,y,5,5);
+    image(bullet, x,y,10,10);
   }
   boolean isColliding(){
     return false;
+  }
+  float getX(){
+    return x;
+  }
+  float getY(){
+    return y;
   }
 
   }
