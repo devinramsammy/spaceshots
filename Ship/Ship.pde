@@ -55,7 +55,7 @@ void enemyImpact(){
     Bullet b = bulletList.get(i);
     for(int a = 0; a < enemy.size(); a++){
       enemyShip c = enemy.get(a);
-      if (dist(b.getX(),b.getY(),c.getX(),c.getY()) < 100){
+      if (dist(b.getX(),b.getY(),c.getX(),c.getY()) < 23){
         bulletList.remove(i);
         enemy.remove(a);
     }
