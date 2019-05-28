@@ -35,17 +35,19 @@ void setup(){
   thingsToDisplay = new ArrayList<Displayable>();
   ship = new playerShip(382,750);
   enemy = new ArrayList();
-  enemyShip x = new enemyShip(25,25,1);
+  enemyBoard();
+  displayEnemy();
   thingsToDisplay.add(ship);
-  thingsToDisplay.add(x);
   
 
 }
 void enemyBoard() {
-  for (int i = 0; i < 1; i++) {
-    float x = 15;
-    float y = 20;
-    enemy.add(new enemyShip(x, y, 1));
+  int counter = 0;
+  for (int i = 0; i < 40; i++) {
+    int x = 70 + i % 10 * 70; 
+    int y = 80 + i/10 * 70;
+
+    enemy.add(new enemyShip(float(x), float(y), 1));
   }
 }
 void displayEnemy(){

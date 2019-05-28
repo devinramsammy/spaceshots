@@ -17,7 +17,7 @@ class enemyShip extends Ships{
     return false;
   }
   void display(){
-    image(enemy, x,y,30,30);
+    image(enemy, x,y,35,35);
   }
 }
     
