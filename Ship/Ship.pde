@@ -34,13 +34,18 @@ void move(){
   float velocity = 2.0;
   for (int i = 0; i < enemy.size(); i++){
       enemy.get(i).setX(velocity + enemy.get(i).getX());
+      if (enemy.get(a).getX() <= 35 ||enemy.get(a).getX() >= 765){
+        velocity *= -1.0;
+      }
   }
   for (int a = 0; a < enemy.size(); a++){
     if (enemy.get(a).getX() <= 35 ||enemy.get(a).getX() >= 765){
         velocity *= -1.0;
         enemy.get(a).setY(enemy.get(a).getY() + 50);
+        break;
       }
-    }
+    
+  }
   }
 
 void setup(){
