@@ -37,7 +37,7 @@ void setup(){
   ship = new playerShip(382,750);
   enemy = new ArrayList();
   enemyBoard();
-  displayEnemy();
+  
   thingsToDisplay.add(ship);
   
 
@@ -50,18 +50,31 @@ void enemyBoard() {
     enemy.add(new enemyShip(float(x), float(y), 1));
   }
 }
-void displayEnemy(){
-  for(int i = 0; i < enemy.size(); i++){
-    thingsToDisplay.add(enemy.get(i));
+void enemyImpact(){
+  for(int i = 0; i < bulletList.size(); i++){
+    Bullet b = bulletList.get(i);
+    for(int a = 0; a < enemy.size(); a++){
+      enemyShip c = enemy.get(a);
+      if (dist(b.getX(),b.getY(),c.getX(),c.getY()) < 100){
+        bulletList.remove(i);
+        enemy.remove(a);
+    }
+    }
+  }
 }
-}
+    
+    
 void draw(){
   background(0);
+  enemyImpact();
   for (Displayable thing : thingsToDisplay) {
     thing.display();
   }
   for (Bullet a: bulletList){
     a.display();
+  }
+  for (enemyShip b: enemy){
+    b.display();
   }
   if(ship.getX() <= -25.0){
     ship.setX(800.0);
