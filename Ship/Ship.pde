@@ -37,10 +37,7 @@ void setup(){
   ship = new playerShip(382,750);
   enemy = new ArrayList();
   enemyBoard();
-  
   thingsToDisplay.add(ship);
-  
-
 }
 void enemyBoard() {
   for (int i = 0; i < 40; i++) {
@@ -75,7 +72,9 @@ void draw(){
   }
   for (enemyShip b: enemy){
     b.display();
+    b.move();
   }
+  
   if(ship.getX() <= -25.0){
     ship.setX(800.0);
     ship.reDraw();
@@ -101,8 +100,6 @@ void draw(){
          }
         }
         ship.lastShot = millis();
-        
-  
     }
   }
   text(bulletList.size() + "", 500, 500);
