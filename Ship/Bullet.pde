@@ -19,7 +19,6 @@ class Bullet implements Impact, Displayable{
       dead = true;
     }
     image(bullet, x,y,10,10);
-    text(this.getY() +"", 600,600);
   }
   boolean isColliding(){
     return false;
