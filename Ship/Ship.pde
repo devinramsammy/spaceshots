@@ -4,8 +4,11 @@ ArrayList<enemyShip> enemy;
 boolean moveLeft = false;
 boolean moveRight = false;
 boolean shoot = false;
-playerShip ship; 
+playerShip ship;
+enemyShip temp;
 Bullet dummy;
+enemyShip leftBound;
+enemyShip rightBound;
 
   void keyPressed(){
     if(key == 'a' || key == 'A'){
@@ -33,7 +36,7 @@ Bullet dummy;
 void enemyMove(){
   for (int i = 0; i < enemy.size(); i++) {
     enemyShip a = (enemyShip) enemy.get(i);
-    a.move();
+   // a.move();
 }
 }
 
@@ -43,6 +46,9 @@ void setup(){
   bulletList = new ArrayList<Bullet>();
   ship = new playerShip(382,750);
   enemy = new ArrayList();
+  leftBound = new enemyShip(600,600,1);
+  tint(0);
+  tint( 255, 255 ); 
   enemyBoard();
   thingsToDisplay.add(ship);
 }
@@ -50,8 +56,8 @@ void enemyBoard() {
   for (int i = 0; i < 40; i++) {
     int x = 70 + i % 10 * 70; 
     int y = 80 + i/10 * 70;
-
-    enemy.add(new enemyShip(float(x), float(y), 1));
+    temp = new enemyShip(float(x), float(y), 1);
+    enemy.add(temp);
   }
 }
 void enemyImpact(){
@@ -110,5 +116,4 @@ void draw(){
         ship.lastShot = millis();
     }
   }
-  text(bulletList.size() + "", 500, 500);
 }
