@@ -34,12 +34,7 @@ enemyShip rightBound;
       shoot = false;
   }
     }
-void enemyMove(){
-  for (int i = 0; i < enemy.size(); i++) {
-    enemyShip a = (enemyShip) enemy.get(i);
-   // a.move();
-}
-}
+
 
 void setup(){
   size(800,800);
@@ -48,8 +43,13 @@ void setup(){
   ship = new playerShip(382,750);
   enemy = new ArrayList();
   enemyO = new ArrayList();
-  enemyBoard();
+ 
   thingsToDisplay.add(ship);
+  tint(0);
+  leftBound = new enemyShip(70.0,80.0,1);
+  rightBound = new enemyShip(700.0,80.0,1);
+  tint(255,255);
+  enemyBoard();
 }
 void enemyBoard() {
   for (int i = 0; i < 40; i++) {
@@ -57,9 +57,11 @@ void enemyBoard() {
     int y = 80 + i/10 * 70;
     temp = new enemyShip(float(x), float(y), 1);
     enemy.add(temp);
-    enemyO.add(temp);
   }
-}
+  enemy.add(leftBound);
+  enemy.add(rightBound);
+
+  }
 void enemyImpact(){
   for(int i = 0; i < bulletList.size(); i++){
     Bullet b = bulletList.get(i);
@@ -87,10 +89,8 @@ void draw(){
     b.display();
     b.move();
   }
-  for (enemyShip c: enemyO){
-    c.move();
-  }
-  enemyMove();
+
+  
   
   if(ship.getX() <= -25.0){
     ship.setX(800.0);

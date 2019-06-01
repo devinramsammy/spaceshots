@@ -23,8 +23,8 @@ class enemyShip extends Ships{
   }
 void move() {
   pushMatrix();
-  this.x += velocity;;
-  if(enemyO.get(0).getX() <= 35 || enemyO.get(9).getX() >= 765){
+  this.x += velocity;
+  if(leftBound.getX() <= 35 || rightBound.getX() >= 765){
     velocity *= -1.0;
     this.y += 30;
   }
