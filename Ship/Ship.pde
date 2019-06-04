@@ -12,6 +12,7 @@ Bullet dummy;
 enemyBullet eDummy;
 Bound leftBound;
 Bound rightBound;
+int state = 0;
 
   void keyPressed(){
     if(key == 'a' || key == 'A'){
@@ -97,11 +98,7 @@ void enemyShoot(enemyShip a){
         }
   }
 }
-
-  
-    
-    
-void draw(){
+void draw_game(){
   background(0);
   textSize(20);
   text("score = "+ship.score,10,30);
@@ -157,5 +154,31 @@ void draw(){
         }
         ship.lastShot = millis();
     }
+  }
+}
+void draw_start(){
+  background(0);
+  textSize(30);
+  text("Press the Space Bar when ready to begin!", 10, 10);
+}
+void draw_boss(){
+}
+void draw_gameOver(){
+  background(0);
+  textSize(40);
+  text("GAME OVER. SCORE = " + ship.score , 400,400);
+}
+void draw(){
+  if (state == 0){
+    draw_start();
+  }
+  if (state == 1){
+    draw_game();
+  }
+  if (state == 2){
+    draw_boss();
+  }
+  if (state == 3){
+    draw_gameOver();
   }
 }
