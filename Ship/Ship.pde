@@ -54,7 +54,7 @@ void setup(){
   enemyBoard();
 }
 void enemyBoard() {
-  for (int i = 0; i < 40; i++) {
+  for (int i = 0; i < 30; i++) {
     int x = 70 + i % 10 * 70; 
     int y = 80 + i/10 * 70;
     temp = new enemyShip(float(x), float(y), 1);
@@ -72,6 +72,16 @@ void enemyImpact(){
         enemy.remove(a);
         ship.score += random(5);
     }
+    }
+  }
+}
+void playerImpact(){
+  for(int i = 0; i < enemyBulletList.size(); i++){
+    enemyBullet b = enemyBulletList.get(i);
+    if(dist(b.getX(), b.getY(), ship.getX(), ship.getY()) < 35){
+      enemyBulletList.remove(i);
+      ship.lives--;
+      ship.score-= 10;
     }
   }
 }
@@ -97,6 +107,7 @@ void draw(){
   text("score = "+ship.score,10,30);
   text("lives = "+ship.lives,10,50);
   enemyImpact();
+  playerImpact();
   for (Displayable thing : thingsToDisplay) {
     thing.display();
   }
