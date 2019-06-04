@@ -8,8 +8,8 @@ boolean shoot = false;
 playerShip ship;
 enemyShip temp;
 Bullet dummy;
-enemyShip leftBound;
-enemyShip rightBound;
+Bound leftBound;
+Bound rightBound;
 
   void keyPressed(){
     if(key == 'a' || key == 'A'){
@@ -46,8 +46,8 @@ void setup(){
  
   thingsToDisplay.add(ship);
   tint(0);
-  leftBound = new enemyShip(70.0,80.0,1);
-  rightBound = new enemyShip(700.0,80.0,1);
+  leftBound = new Bound(70.0,80.0);
+  rightBound = new Bound(700.0,80.0);
   tint(255,255);
   enemyBoard();
 }
@@ -58,8 +58,6 @@ void enemyBoard() {
     temp = new enemyShip(float(x), float(y), 1);
     enemy.add(temp);
   }
-  enemy.add(leftBound);
-  enemy.add(rightBound);
 
   }
 void enemyImpact(){
@@ -89,6 +87,10 @@ void draw(){
     b.display();
     b.move();
   }
+  leftBound.display();
+  leftBound.move();
+  rightBound.display();
+  rightBound.move();
 
   
   
