@@ -1,7 +1,7 @@
 class Bound{
   PImage bound;
   float x,y;
-  float velocity = 1.0;
+  float velocity = 1.5;
   Bound(float x, float y){
     this.x = x;
     this.y = y;
@@ -18,7 +18,9 @@ class Bound{
   popMatrix();
   }
   void display(){
+    tint(0, 0);
     image(bound, x,y,35,35);
+    noTint();
   }
   float getX(){
     return x;
