@@ -4,7 +4,7 @@ class enemyShip extends Ships{
   enemyShip(float x, float y, int damage){
     super(x,y);
     this.attack = damage;
-    velocity = 1.5;
+    velocity = 1.2;
     enemy1 = loadImage("enemy.png");
   }
   void setAttack(){

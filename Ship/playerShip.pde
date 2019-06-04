@@ -1,10 +1,14 @@
 class playerShip extends Ships{
   PImage player;
   int lastShot;
+  int score;
+  int lives;
   playerShip(float x, float y){
     super(x,y);
     player = loadImage("player.jpg");
     lastShot = 0;
+    score = 0;
+    lives = 3;
   }
   
   void setAttack(){
