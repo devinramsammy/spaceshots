@@ -159,7 +159,10 @@ void draw_game(){
 void draw_start(){
   background(0);
   textSize(30);
-  text("Press the Space Bar when ready to begin!", 10, 10);
+  text("Press the Space Bar when ready to begin!", 100, 90);
+  if (keyPressed == true && keycode == ' '){
+    state = 1;
+  }
 }
 void draw_boss(){
 }
