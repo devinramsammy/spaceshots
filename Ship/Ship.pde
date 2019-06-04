@@ -10,6 +10,7 @@ enemyShip temp;
 Bullet dummy;
 Bound leftBound;
 Bound rightBound;
+int score;
 
   void keyPressed(){
     if(key == 'a' || key == 'A'){
@@ -43,7 +44,7 @@ void setup(){
   ship = new playerShip(382,750);
   enemy = new ArrayList();
   enemyO = new ArrayList();
- 
+  score = 0;
   thingsToDisplay.add(ship);
   tint(0);
   leftBound = new Bound(70.0,80.0);
@@ -68,6 +69,7 @@ void enemyImpact(){
       if (dist(b.getX(),b.getY(),c.getX(),c.getY()) < 23){
         bulletList.remove(i);
         enemy.remove(a);
+        score+= random(5);
     }
     }
   }
@@ -76,6 +78,8 @@ void enemyImpact(){
     
 void draw(){
   background(0);
+  textSize(20);
+  text("score = "+score,10,30);
   enemyImpact();
   for (Displayable thing : thingsToDisplay) {
     thing.display();
