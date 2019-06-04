@@ -6,13 +6,14 @@ ArrayList<enemyShip> enemyO;
 boolean moveLeft = false;
 boolean moveRight = false;
 boolean shoot = false;
+boolean start = false;
 playerShip ship;
 enemyShip temp;
 Bullet dummy;
 enemyBullet eDummy;
 Bound leftBound;
 Bound rightBound;
-int state = 0;
+int state = 1;
 
   void keyPressed(){
     if(key == 'a' || key == 'A'){
@@ -23,6 +24,9 @@ int state = 0;
       }
     else if(key == 'w'){
         shoot = true;
+  }
+   else if(key == ' '){
+        start = true;
   }
   }
   
@@ -35,6 +39,9 @@ int state = 0;
       }
     else if(key == 'w'){
       shoot = false;
+  }
+   else if(key == ' '){
+        start = false;
   }
     }
 
@@ -155,12 +162,18 @@ void draw_game(){
         ship.lastShot = millis();
     }
   }
+  if(ship.lives == 0){
+    state = 3;
+  }
 }
 void draw_start(){
   background(0);
   textSize(30);
   text("Press the Space Bar when ready to begin!", 100, 90);
-  if (keyPressed == true && keycode == ' '){
+  textSize(20);
+  text("Instructions: Use A and D to move left and right and use W to shoot. You", 40,300);
+  text("start with three lives. After each collision with an enemy shot, you lose a life.", 40, 320);
+  if (start){
     state = 1;
   }
 }
@@ -169,7 +182,13 @@ void draw_boss(){
 void draw_gameOver(){
   background(0);
   textSize(40);
-  text("GAME OVER. SCORE = " + ship.score , 400,400);
+  text("GAME OVER. SCORE = " + ship.score , 180,400);
+  textSize(30);
+  text("Press the Space Bar to restart", 200, 440);
+  if (start){
+    state = 1;
+  }
+  
 }
 void draw(){
   if (state == 0){
