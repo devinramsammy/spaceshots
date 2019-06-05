@@ -16,8 +16,9 @@ laserBeam lDummy;
 Bound leftBound;
 Bound rightBound;
 Boss boss;
-int state = 0;
+int state = 2;
 int tempScore;
+int time = 0;
 
   void keyPressed(){
     if(key == 'a' || key == 'A'){
@@ -66,6 +67,7 @@ void setup(){
   boss = new Boss(300,50);
   thingsToDisplayBoss.add(ship);
   thingsToDisplayBoss.add(boss);
+  time = 0;
 }
   
 void enemyBoard() {
@@ -112,8 +114,14 @@ void enemyShoot(enemyShip a){
   }
 }
 void bossFire(){
+  time+= 100;
+  if (time >= 10000){
+    boss.shotForm = (int)random(3);
+    time = 0;
+  }
+  text(boss.shotForm, 10,10);
   if(boss.getState() == 0){
-    if (true){
+    if ((int)random(5) > 2){
       laser.add((new laserBeam(boss.getX() + 86,boss.getY()+ 161)));
     for(int i = 0; i < laser.size(); i++){
             lDummy = laser.get(i);
@@ -123,6 +131,7 @@ void bossFire(){
         }
   }
 }
+  
 }
 void draw_game(){
   background(0);

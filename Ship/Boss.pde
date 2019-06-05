@@ -4,6 +4,7 @@ class Boss implements Displayable{
   int shotForm;
   boolean moveLeft;
   boolean moveRight;
+  int lastShot;
   Boss(float x, float y){
     this.x = x;
     this.y = y;
