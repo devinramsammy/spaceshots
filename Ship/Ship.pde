@@ -17,7 +17,7 @@ laserBeam lDummy;
 Bound leftBound;
 Bound rightBound;
 Boss boss;
-int state = 1;
+int state = 0;
 int tempScore;
 int time = 0;
 
