@@ -2,7 +2,6 @@ ArrayList<Displayable> thingsToDisplay;
 ArrayList<Bullet> bulletList;
 ArrayList<enemyBullet> enemyBulletList;
 ArrayList<enemyShip> enemy;
-ArrayList<enemyShip> enemyO;
 boolean moveLeft = false;
 boolean moveRight = false;
 boolean shoot = false;
@@ -13,7 +12,7 @@ Bullet dummy;
 enemyBullet eDummy;
 Bound leftBound;
 Bound rightBound;
-int state = 1;
+int state = 0;
 
   void keyPressed(){
     if(key == 'a' || key == 'A'){
@@ -53,7 +52,6 @@ void setup(){
   enemyBulletList = new ArrayList<enemyBullet>();
   ship = new playerShip(382,750);
   enemy = new ArrayList();
-  enemyO = new ArrayList();
   thingsToDisplay.add(ship);
   tint(0);
   leftBound = new Bound(70.0,80.0);
@@ -185,9 +183,13 @@ void draw_gameOver(){
   text("GAME OVER. SCORE = " + ship.score , 180,400);
   textSize(30);
   text("Press the Space Bar to restart", 200, 440);
+  ship.lives = 3;
+  ship.score = 0;
   if (start){
     state = 1;
+    setup();
   }
+  
   
 }
 void draw(){
