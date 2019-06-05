@@ -12,7 +12,9 @@ Bullet dummy;
 enemyBullet eDummy;
 Bound leftBound;
 Bound rightBound;
-int state = 0;
+Boss boss;
+int state = 2;
+int tempScore;
 
   void keyPressed(){
     if(key == 'a' || key == 'A'){
@@ -53,12 +55,18 @@ void setup(){
   ship = new playerShip(382,750);
   enemy = new ArrayList();
   thingsToDisplay.add(ship);
-  tint(0);
   leftBound = new Bound(70.0,80.0);
   rightBound = new Bound(700.0,80.0);
-  tint(255,255);
   enemyBoard();
 }
+void setupBoss(){
+  size(800,800);
+  thingsToDisplay = new ArrayList<Displayable>();
+  boss = new Boss(300,50);
+  thingsToDisplay.add(ship);
+  thingsToDisplay.add(boss);
+}
+  
 void enemyBoard() {
   for (int i = 0; i < 30; i++) {
     int x = 70 + i % 10 * 70; 
@@ -161,6 +169,7 @@ void draw_game(){
     }
   }
   if(ship.lives == 0){
+    tempScore = ship.score;
     state = 3;
   }
 }
@@ -176,11 +185,50 @@ void draw_start(){
   }
 }
 void draw_boss(){
+  background(0);
+  setupBoss();
+  for (Displayable thing : thingsToDisplay) {
+    thing.display();
+  }
+  for (Bullet a: bulletList){
+    a.display();
+  }
+  if(ship.getX() <= -25.0){
+    ship.setX(800.0);
+    ship.reDraw();
+  }
+  if(moveLeft){
+    ship.moveLeft();
+  }
+  if(ship.getX() >= 800.0){
+    ship.setX(-25.0);
+    ship.reDraw();
+  }
+  if(moveRight){
+    ship.moveRight();
+  }
+
+  if(shoot){
+    if (millis() - ship.lastShot>300){
+        bulletList.add(new Bullet(ship.getX() + 23,ship.getY()+ 9,1));// to do - flaw(always 4 bullets alive)
+        for(int i = 0; i < bulletList.size(); i++){
+            dummy = bulletList.get(i);
+            if(dummy.getVoid()){
+              bulletList.remove(i);
+         }
+        }
+        ship.lastShot = millis();
+    }
+  }
+  if(ship.lives == 0){
+    tempScore = ship.score;
+    state = 3;
+  }
 }
 void draw_gameOver(){
   background(0);
   textSize(40);
-  text("GAME OVER. SCORE = " + ship.score , 180,400);
+  text("GAME OVER. SCORE = " + tempScore , 180,400);
   textSize(30);
   text("Press the Space Bar to restart", 200, 440);
   ship.lives = 3;
@@ -189,8 +237,7 @@ void draw_gameOver(){
     state = 1;
     setup();
   }
-  
-  
+
 }
 void draw(){
   if (state == 0){
