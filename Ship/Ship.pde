@@ -16,7 +16,7 @@ laserBeam lDummy;
 Bound leftBound;
 Bound rightBound;
 Boss boss;
-int state = 2;
+int state = 0;
 int tempScore;
 
   void keyPressed(){
@@ -200,6 +200,7 @@ void draw_start(){
 void draw_boss(){
   background(0);
   bossFire();
+  boss.move();
   for (Displayable thing : thingsToDisplayBoss) {
     thing.display();
   }
