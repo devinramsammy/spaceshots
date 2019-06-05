@@ -32,6 +32,12 @@ class laserBeam{
     }
     
   }
+  float getX(){
+    return x;
+  }
+  float getY(){
+    return y;
+  }
    boolean getVoid(){
     return dead;
   }

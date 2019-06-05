@@ -27,7 +27,7 @@ class Boss implements Displayable{
       fill(0, 255, 0);
      }
     rect(160,10, health/100.0 * 500, 25);
-    
+    noFill();
     
     if(heal){
       tint(0,255,0);
