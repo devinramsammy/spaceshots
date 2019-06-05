@@ -15,3 +15,10 @@ class Boss implements Displayable{
     if (shotForm == 0){
       
 }
+  float getX(){
+    return x;
+  }
+  float getY(){
+    return y;
+  }
+  }
