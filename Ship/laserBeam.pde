@@ -15,7 +15,7 @@ class laserBeam{
     else{
       dead = true;
     }
-    image(laser, x, y, 105,105);
+    image(laser, x, y, 25,25);
   }
    boolean getVoid(){
     return dead;

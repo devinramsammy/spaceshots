@@ -1,4 +1,5 @@
 ArrayList<Displayable> thingsToDisplay;
+ArrayList<Displayable> thingsToDisplayBoss;
 ArrayList<Bullet> bulletList;
 ArrayList<enemyBullet> enemyBulletList;
 ArrayList<enemyShip> enemy;
@@ -60,13 +61,11 @@ void setup(){
   leftBound = new Bound(70.0,80.0);
   rightBound = new Bound(700.0,80.0);
   enemyBoard();
-}
-void setupBoss(){
-  thingsToDisplay = new ArrayList<Displayable>();
+  thingsToDisplayBoss = new ArrayList<Displayable>();
   laser = new ArrayList<laserBeam>();
   boss = new Boss(300,50);
-  thingsToDisplay.add(ship);
-  thingsToDisplay.add(boss);
+  thingsToDisplayBoss.add(ship);
+  thingsToDisplayBoss.add(boss);
 }
   
 void enemyBoard() {
@@ -114,8 +113,8 @@ void enemyShoot(enemyShip a){
 }
 void bossFire(){
   if(boss.getState() == 0){
-    if ((int)random(100) == 1){
-      laser.add((new laserBeam(boss.getX() + 23,boss.getY()+ 9)));
+    if (true){
+      laser.add((new laserBeam(boss.getX() + 90,boss.getY()+ 158)));
   
     for(int i = 0; i < laser.size(); i++){
             lDummy = laser.get(i);
@@ -202,11 +201,14 @@ void draw_start(){
 void draw_boss(){
   background(0);
   bossFire();
-  for (Displayable thing : thingsToDisplay) {
+  for (Displayable thing : thingsToDisplayBoss) {
     thing.display();
   }
   for (Bullet a: bulletList){
     a.display();
+  }
+  for (laserBeam b: laser){
+    b.display();
   }
   if(ship.getX() <= -25.0){
     ship.setX(800.0);
