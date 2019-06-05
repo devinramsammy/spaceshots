@@ -17,7 +17,7 @@ laserBeam lDummy;
 Bound leftBound;
 Bound rightBound;
 Boss boss;
-int state = 0;
+int state = 1;
 int tempScore;
 int time = 0;
 
@@ -71,7 +71,25 @@ void setup(){
   thingsToDisplayBoss.add(boss);
   time = 0;
 }
-  
+void reSetupG(){
+  thingsToDisplay = new ArrayList<Displayable>();
+  bulletList = new ArrayList<Bullet>();
+  enemyBulletList = new ArrayList<enemyBullet>();
+  enemy = new ArrayList();
+  thingsToDisplay.add(ship);
+  leftBound = new Bound(70.0,80.0);
+  rightBound = new Bound(700.0,80.0);
+  enemyBoard();
+}
+void reSetupB(){
+   thingsToDisplayBoss = new ArrayList<Displayable>();
+  laser = new ArrayList<laserBeam>();
+  laser1 = new ArrayList<laserBeam>();
+  boss = new Boss(300,50);
+  thingsToDisplayBoss.add(ship);
+  thingsToDisplayBoss.add(boss);
+  time = 0;
+}
 void enemyBoard() {
   for (int i = 0; i < 30; i++) {
     int x = 70 + i % 10 * 70; 
@@ -125,7 +143,7 @@ void bossImpact(){
     Bullet b = bulletList.get(i);
       if (dist(b.getX(),b.getY(),boss.getX(),boss.getY()) < 100){
         bulletList.remove(i);
-        boss.health-= 2.0;
+        boss.health-= 10.0;
         ship.score += random(8);
     }
     }
@@ -242,6 +260,7 @@ void draw_game(){
     state = 3;
   }
   if(enemy.size() == 0){
+    reSetupB();
     state = 2;
     ship.lives++;
 }
@@ -258,6 +277,11 @@ void draw_start(){
   }
 }
 void draw_boss(){
+  if(boss.health <= 0.0){
+    reSetupG();
+    state = 1;
+    ship.lives++;
+  }
   background(0);
   fill(255);
   textSize(20);
@@ -310,10 +334,7 @@ void draw_boss(){
     tempScore = ship.score;
     state = 3;
   }
-  if(boss.health <= 0.0){
-    state = 1;
-    ship.lives++;
-  }
+  
     
 }
 void draw_gameOver(){
@@ -337,9 +358,11 @@ void draw(){
   }
   if (state == 1){
     draw_game();
+    
   }
   if (state == 2){
     draw_boss();
+    
   }
   if (state == 3){
     draw_gameOver();
