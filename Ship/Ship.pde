@@ -111,14 +111,22 @@ void playerImpact(){
       ship.score-= 10;
     }
 }
+for(int i = 0; i < laser1.size(); i++){
+    laserBeam a = laser1.get(i);
+    if(dist(a.getX(), a.getY(), ship.getX(), ship.getY()) < 35){
+      laser1.remove(i);
+      ship.lives--;
+      ship.score-= 10;
+    }
+}
 }
 void bossImpact(){
   for(int i = 0; i < bulletList.size(); i++){
     Bullet b = bulletList.get(i);
-      if (dist(b.getX(),b.getY(),boss.getX(),boss.getY()) < 150){
+      if (dist(b.getX(),b.getY(),boss.getX(),boss.getY()) < 100){
         bulletList.remove(i);
         boss.health-= 2.0;
-        ship.score += random(5);
+        ship.score += random(8);
     }
     }
   }
@@ -155,7 +163,7 @@ void bossFire(){
   if(boss.getState() == 1){
     boss.noHeal();
     if ((int)random(5) > 2){
-      laser1.add((new laserBeam(boss.getX() + 86,boss.getY()+ 161, 1)));
+      laser1.add((new laserBeam(boss.getX() + 86,boss.getY() + 161, 1)));
     for(int i = 0; i < laser1.size(); i++){
             lDummy = laser1.get(i);
             if(lDummy.getVoid()){
@@ -171,6 +179,7 @@ void bossFire(){
 void draw_game(){
   background(0);
   textSize(20);
+  fill(255);
   text("score = "+ship.score,10,30);
   text("lives = "+ship.lives,10,50);
   enemyImpact();
@@ -190,6 +199,9 @@ void draw_game(){
     b.display();
     enemyShoot(b);
     b.move();
+    if (b.getY() >= 720){
+      state = 3;
+    }
   }
   leftBound.display();
   leftBound.move();
@@ -254,6 +266,7 @@ void draw_boss(){
   bossFire();
   boss.move();
   bossImpact();
+  playerImpact();
   for (Displayable thing : thingsToDisplayBoss) {
     thing.display();
   }
@@ -306,6 +319,7 @@ void draw_boss(){
 void draw_gameOver(){
   background(0);
   textSize(40);
+  fill(255,0,0);
   text("GAME OVER. SCORE = " + tempScore , 180,400);
   textSize(30);
   text("Press the Space Bar to restart", 200, 440);
