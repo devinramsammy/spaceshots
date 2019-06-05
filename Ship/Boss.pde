@@ -11,14 +11,13 @@ class Boss implements Displayable{
   void display(){
     image(Boss,x,y,200,200);
   }
-  void fire(){
-    if (shotForm == 0){
-      
-}
   float getX(){
     return x;
   }
   float getY(){
     return y;
+  }
+  int getState(){
+    return shotForm;
   }
   }
