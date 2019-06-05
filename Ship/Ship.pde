@@ -141,9 +141,9 @@ for(int i = 0; i < laser1.size(); i++){
 void bossImpact(){
   for(int i = 0; i < bulletList.size(); i++){
     Bullet b = bulletList.get(i);
-      if (dist(b.getX(),b.getY(),boss.getX(),boss.getY()) < 100){
+      if (dist(b.getX(),b.getY(),boss.getX() + 100,boss.getY()) < 100){
         bulletList.remove(i);
-        boss.health-= 10.0;
+        boss.health-= 2.0;
         ship.score += random(8);
     }
     }
