@@ -20,4 +20,18 @@ class Boss implements Displayable{
   int getState(){
     return shotForm;
   }
+  void move(){
+    if (this.x < 600){
+      pushMatrix();
+      this.x -= 1;
+      translate(x,y);
+      popMatrix();
   }
+  else if (this.x > 200){
+      pushMatrix();
+      this.x -= 1;
+      translate(x,y);
+      popMatrix();
+  }
+}
+}

@@ -114,8 +114,7 @@ void enemyShoot(enemyShip a){
 void bossFire(){
   if(boss.getState() == 0){
     if (true){
-      laser.add((new laserBeam(boss.getX() + 90,boss.getY()+ 158)));
-  
+      laser.add((new laserBeam(boss.getX() + 86,boss.getY()+ 161)));
     for(int i = 0; i < laser.size(); i++){
             lDummy = laser.get(i);
             if(lDummy.getVoid()){
